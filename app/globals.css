@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Hijau tua sidebar (mengikuti gambar referensi) */
+  --color-hutan-900: #053d27;
+  --color-hutan-800: #0a5c3a;
+  --color-hutan-700: #0f6e47;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Mode cetak laporan: sembunyikan sidebar, topbar & tombol */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+  body {
+    background: white;
+  }
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+}
+
+.only-print {
+  display: none;
+}
+@media print {
+  .only-print {
+    display: block;
+  }
+}
+
+@keyframes muncul {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.anim-muncul {
+  animation: muncul 0.15s ease-out;
+}
